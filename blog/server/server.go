@@ -15,7 +15,7 @@ var collection *mongo.Collection
 
 var mongoURI string = "mongodb://root:root@localhost:27017/"
 
-var addr string = "0.0.0.0:50051"
+var addr string = "0.0.0.0:5051"
 
 type Server struct {
 	pb.BlogServiceServer

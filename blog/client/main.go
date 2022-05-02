@@ -9,7 +9,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-var addr string = "localhost:90051"
+var addr string = "localhost:5051"
 
 func main() {
 	conn, err := grpc.Dial(addr, grpc.WithTransportCredentials(insecure.NewCredentials()))
@@ -22,5 +22,10 @@ func main() {
 
 	c := pb.NewBlogServiceClient(conn)
 
-	createBlog(c)
+	id := createBlog(c)
+	doReadBlog(c, id)
+	//doReadBlog(c, "aNonExistingId")
+	updateBlog(c, id)
+	listBlogs(c)
+	deleteBlog(c, id)
 }
